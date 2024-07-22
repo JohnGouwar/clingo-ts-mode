@@ -23,7 +23,7 @@ This package is not yet hosted on MELPA, but can be installed using `package-vc-
   (add-to-list 'auto-mode-alist '("\\.lp" . clingo-ts-mode)))
 ```
 
-`vc-use-package` is not strictly necessary, and is actually included in Emacs 30. 
+`vc-use-package` is not strictly necessary and is actually included in Emacs 30. 
 
 # Usage 
 
