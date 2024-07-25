@@ -101,10 +101,12 @@
   (setq-local treesit-simple-indent-rules
 	      `((clingo
 		 ((node-is "statement") column-0 0)
+                 ((node-is "RPAREN") parent 0)
 		 ((parent-is "bodycomma") prev-sibling 0)
 		 ((parent-is "bodydot") prev-sibling 0)
 		 ((parent-is "litvec") first-sibling 0)
-		 (no-node parent 0))))
+		 ((parent-is "termvec") first-sibling 0)
+		 (catch-all prev-line 2))))
   
   (treesit-major-mode-setup))
 
@@ -114,6 +116,8 @@
   :syntax-table clingo-mode-syntax-table
   (when (treesit-ready-p 'clingo)
     (treesit-parser-create 'clingo)
+    (setq-local comment-start "%")
+    (setq-local comment-start-skip "%+[\t ]*")
     (clingo-ts-setup)))
 
 (provide 'clingo-ts-mode)
